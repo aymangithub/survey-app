@@ -1,0 +1,72 @@
+﻿@model LicenseSurveyViewModel
+
+@{
+    ViewData["Title"] = "استبيان رخصة المباني";
+}
+
+<div class="container w-50">
+    <h3 class="mb-2 text-right" style="font-size: 1.5rem">الاسم: @Model.Name</h3>
+
+    <form method="post" class="text-right" enctype="multipart/form-data">
+        @*   <input type="hidden" name="SurveyId" id="SurveyId" value="@Model.Item1.Id" />*@
+        <div class="form-group">
+            <label for="exampleInputEmail1">@Model.LicenseId</label>
+
+            @*    <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" id="Email" name="Email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+       *@
+        </div>
+        @if (Model.LicenseHasResponseBefore == true)
+        {
+                            <h5 class="my-4">
+                                شكراً لك. لقد استقبلنا إجاباتك بالفعل
+                            </h5>
+
+        }
+        @if (Model.LicenseHasResponseBefore == false)
+        {
+                                   <h5 class="my-4">من فضلك أجبنا على الأسئلة التالية</h5>
+
+                        <div class="mb-4">
+                            <div class="mb-3">@Model.Question1Text</div>
+                                    <span asp-validation-for="Question1ResponseValue" class="text-danger"></span>
+                @for (int j = 0; j < @Model.Question1Choices.Length; j++)
+                {
+                                                                <div class="pl-2 mb-1">
+<input asp-for="@Model.Question1ResponseValue" value="@Model.Question1Choices[j].Value" type="radio" />
+         <span>@Model.Question1Choices[j].Text</span>
+                                                                </div>
+                }
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="mb-3">@Model.Question2Text</div>
+                @for (int j = 0; j < @Model.Question2Choices.Length; j++)
+                {
+                     <div class="pl-2 mb-1">
+                     <input id="id@(j)" asp-for="@Model.Question2ResponseValue" value="@Model.Question2Choices[j].Value" type="radio" />
+                      <span for="id@(j)">@Model.Question2Choices[j].Text</span>
+                                                                    </div>
+                }
+                        </div>
+
+             <div class="row mt-2">
+                    <div class="col-12">
+                        <label class="col-form-label">اختر ملف أو أكثر </label>
+                            <input asp-for="Files" class="form-control" multiple  accept="image/*"/>
+                        <span asp-validation-for="Files" class="text-danger"></span>
+                    </div>
+                </div>
+
+                    <div class="mt-3">
+                        <a class="btn btn-outline-danger" asp-controller="Home" asp-action="Index">إلغاء</a>
+                        <button type="submit" class="btn btn-primary">إرسال إجاباتي</button>
+                    </div>
+
+
+        }
+
+
+    </form>
+</div>

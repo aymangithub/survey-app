@@ -6,24 +6,27 @@ using System.Threading.Tasks;
 
 namespace SurveyApp.Web.Models
 {
-	public class Survey
-	{
-		public int Id { get; set; }
+    public class License
+    {
+        public int Id { get; set; }
 
-		[Display(Name = "Title")]
-		[Required]
-		public string Title { get; set; }
+        public string LicenseId { get; set; }
 
-		[Required]
-		public string UserId { get; set; }
+        public string LicenseType { get; set; }
 
-		[Display(Name = "Created At")]
-		public DateTime CreatedAt { get; set; }
+        public string BuildingType { get; set; }
 
-		public DateTime UpdatedAt { get; set; }
+        public string BaladiaName { get; set; }
 
-		public List<Question> Questions { get; set; }
+        public string LicenseDateHijri { get; set; }
 
-		public List<FilledSurvey> FilledSurveys { get; set; }
-	}
+        public string LicenseEndDateHijri { get; set; }
+        public string AddressHai { get; set; }
+        public string NationalIdentityNumber { get; set; }
+        public string Name { get; set; }
+        public string MobileNumber { get; set; }
+        public string LicenseIdEncrypted { get; set; }
+
+
+    }
 }

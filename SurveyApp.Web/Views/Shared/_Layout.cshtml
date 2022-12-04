@@ -3,11 +3,11 @@
 @inject UserManager<SurveyApp.Web.Areas.Identity.Data.ApplicationUser> UserManager
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Survey App</title>
+    <title>@ViewData["Title"] - أمانة حائل</title>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
@@ -18,13 +18,16 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #e3f2fd;">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Survey App</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">استبيان أمانة حائل</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
+                   <img src="https://orbitsapps.com/images/hail2.jpg" style="
+    width: 108px;
+">
+              @*      <partial name="_LoginPartial" />
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <ul class="navbar-nav flex-grow-1">
@@ -32,7 +35,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Survey" asp-action="Index">My Surveys</a>
                             </li>
                         </ul>
-                    }
+                    }*@
                 </div>
             </div>
         </nav>
@@ -45,12 +48,15 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - SurveyApp
+            &copy; 2022 - أمانة حائل
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+    @section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
 </body>
 </html>
